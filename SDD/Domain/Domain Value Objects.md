@@ -5,6 +5,20 @@
 Los objetos de valor representas conceptos inmutables dentro del dominio de NexusMarket. A diferencia de las entidades, no tienen una identidad propia; en su ligar, se definen en su totalidad por sus atributos.
 
 Estos objetos encapsulan valores de negocio controlados, mejoran la expresividad del dominio y evitan el uso de tipos primitivos o cadenas de texto dispersas a lo largo de la aplicación.
+--
+# Jerarquía de Objetos de Valor
+```text
+DomainCatalog (Abstract)
+├── UserRole
+├── UserStatus
+├── WarehouseType
+├── ProductType
+├── ProductStatus
+├── MovementType
+└── OrderStatus
+
+Name
+```
 
 # DomainCatalog (Abstract)
 
@@ -132,7 +146,7 @@ Descripcion: Representa la talla de una variante de producto
 
 Valores
 
-```java
+```text
 1 XS
 2 S
 3 M
