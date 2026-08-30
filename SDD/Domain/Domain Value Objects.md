@@ -5,17 +5,22 @@
 Los objetos de valor representas conceptos inmutables dentro del dominio de NexusMarket. A diferencia de las entidades, no tienen una identidad propia; en su ligar, se definen en su totalidad por sus atributos.
 
 Estos objetos encapsulan valores de negocio controlados, mejoran la expresividad del dominio y evitan el uso de tipos primitivos o cadenas de texto dispersas a lo largo de la aplicación.
---
-# Jerarquía de Objetos de Valor
-```text
-DomainCatalog (Abstract)
+
+## Jerarquía de objetos de valor
+
+```java
+DomainCatalog (Abstracto)
 ├── UserRole
 ├── UserStatus
-├── WarehouseType
+├── CommercialStatus
 ├── ProductType
+├── WarehouseType
 ├── ProductStatus
 ├── MovementType
-└── OrderStatus
+├── OrderStatus
+├── ShippingStatus
+├── ReturnStatus
+└── RefundStatus
 
 Name
 ```
@@ -34,7 +39,15 @@ Todos los valores controlados del negocio heredan de esta clase, garantizado una
 | --- | --- | --- |
 | code | String | Identificador único de negocio. |
 | name | String | Nombre legible mostrado en la aplicación. |
-| descripcion | String | Definición funcional del valor del catálogo. |
+| description | String | Definición funcional del valor del catálogo. |
+
+Características 
+
+- Es inmutable
+- La igualdad se determina por sus valores y no por la identidad del objeto
+- Los valores del catalogo estan controlados con por el dominio
+- Cada valor del catalogo code unico dentro de su tipo
+- Las entidades deben hacer referencia al objeto de valor correspondiente
 
 # UserRole
 
@@ -70,11 +83,28 @@ Hereda de: DomainCatalog
 | BLOCKED | Bloqueado | El usuario no puede acceder al sistema. |
 | SUSPENDED | Suspendido | El usuario se encuentra suspendido temporalmente. |
 
+# **ProductType**
+
+## **Descripcion:**
+
+Representa el tipo de producto comercializado
+
+Hereda de: DomainCatalog
+
+### **Valores permitidos**
+
+| Codigo | Nombre | Descripción |
+| --- | --- | --- |
+| PHYSICAL | Físico | Requiere inventario, almacenamiento y despacho. |
+| DIGITAL | Digital | Se entrega electrónicamente tras el pago. |
+
 # WharehousType
 
 ## Descripción:
 
 Representa la clasificación de una bodega dentro del Marketplace.
+
+El tipo permite diferenciar los espacios físicos pertenecientes directamente al Marketplace de las bodegas pertenecientes o asociadas con vendedores.
 
 Hereda de: DomainCatalog
 
@@ -84,21 +114,6 @@ Hereda de: DomainCatalog
 | --- | --- | --- |
 | MARKETPLACE | Marketplace | Bodega perteneciente al Marketplace. |
 | SELLER | Vendedor | Bodega perteneciente a un vendedor. |
-
-# ProductType
-
-## Descripcion:
-
-Representa el tipo de producto comercializado
-
-Hereda de: DomainCatalog
-
-### Valores permitidos
-
-| Codigo | Nombre | Descripción |
-| --- | --- | --- |
-| PHYSICAL | Físico | Requiere inventario, almacenamiento y despacho. |
-| DIGITAL | Digital | Se entrega electrónicamente tras el pago. |
 
 # ProductStatus
 
@@ -116,13 +131,78 @@ Hereda de: DomainCatalog
 | SUSPENDED | Suspendido | Temporalmente fuera del catálogo. |
 | DISCONTINUED | Descontinuado | Producto retirado definitivamente. |
 
+Ciclo de vida
+
+```java
+PUBLISHED
+    │
+    ├──────────────────> SUSPENDED
+    │                         │
+    │                         └──────────────> PUBLISHED
+    │
+    └──────────────────> DISCONTINUED
+
+SUSPENDED
+    └──────────────────> DISCONTINUED
+```
+
 # MovementType
 
-(movimientos afectan las existencias del inve)
+Representa el tipo de modificación realizada sobre las existencias de un inventario.
+
+Hereda de DomainCatalog
+
+Valores permitidos 
+
+| Codidigo | Nombre | Descripción |
+| --- | --- | --- |
+| INBOUND | Ingreso | Registra la entrada de unidades al inventario. |
+| RESERVATION | Reserva | Separa temporalmente unidades para un proceso de compra. |
+| SALE_OUTPUT | Salida por venta | Registra la salida de unidades como resultado de una venta. |
+| ADJUSTMENT | Ajuste | Modifica las existencias debido a una corrección operativa. |
+| RETURN | Devolución | Registra el retorno de unidades provenientes de una devolución. |
 
 # OrderStatus
 
-(ciclo de vida de un pedido)
+Representa el estado actual del compromiso comercial formal realizado por un comprador dentro del sistema.
+
+Hereda de 
+
+DomainCatalog
+
+| Codidigo | Nombre | Descripción |
+| --- | --- | --- |
+| PENDING_PAYMENT | Pendiente de pago | El pedido espera la confirmación financiera. |
+| PAID | Pagado | El pago fue validado y puede comenzar el proceso de alistamiento. |
+| DISPATCHED | Despachado | El pedido físico salió de la bodega. |
+| DELIVERED | Entregado | El pedido fue entregado al comprador. |
+| FINALISED | Finalizado | El ciclo comercial del pedido concluyó satisfactoriamente. |
+
+## Ciclo de vida
+
+```java
+CarritoDeCompras
+       │
+       │ confirmación de compra
+       ▼
+PENDING_PAYMENT
+       │
+       │ validación del pago
+       ▼
+     PAID
+       │
+       │ preparación y salida física
+       ▼
+  DISPATCHED
+       │
+       │ entrega al comprador
+       ▼
+   DELIVERED
+       │
+       │ cierre del proceso
+       ▼
+   FINALISED
+```
 
 # Name
 
@@ -146,7 +226,7 @@ Descripcion: Representa la talla de una variante de producto
 
 Valores
 
-```text
+```java
 1 XS
 2 S
 3 M
