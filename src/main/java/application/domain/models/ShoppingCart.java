@@ -1,5 +1,13 @@
 package application.domain.models;
 
-public class ShoppingCart {
+import java.util.List;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+
+public class ShoppingCart {
+    private List<Variant> items;
 }

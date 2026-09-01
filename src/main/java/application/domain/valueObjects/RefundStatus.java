@@ -1,5 +1,7 @@
 package application.domain.valueObjects;
 
-public class RefundStatus {
-
+public enum RefundStatus {
+    Pending,
+    Processing,
+    Succeded,
 }

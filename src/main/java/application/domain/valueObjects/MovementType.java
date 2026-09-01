@@ -1,5 +1,9 @@
 package application.domain.valueObjects;
 
-public class MovementType {
-
+public enum MovementType {
+    Inbound,
+    Reservation,
+    SaleOutput,
+    Adjustment,
+    Return,
 }

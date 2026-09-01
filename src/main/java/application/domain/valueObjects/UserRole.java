@@ -1,5 +1,9 @@
-package application.domain.models.valueObjects;
+package application.domain.valueObjects;
 
-public class UsserRole {
+public enum UserRole {
+    Buyer,
+    Seller,
+    LogisticOperator,
+    Administrator,
 
 }

@@ -1,5 +1,8 @@
 package application.domain.valueObjects;
 
-public class ShippingStatus {
-
+public enum ShippingStatus {
+    PENDING,
+    SHIPPED,
+    DELIVERED,
+    RETURNED,
 }

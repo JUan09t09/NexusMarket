@@ -1,5 +1,8 @@
 package application.domain.valueObjects;
 
-public class ReturnStatus {
+public enum ReturnStatus {
+    Pending,
+    Approved,
+    Rejected,
 
 }

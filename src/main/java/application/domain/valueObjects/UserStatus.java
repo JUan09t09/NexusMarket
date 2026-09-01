@@ -1,5 +1,7 @@
-package application.domain.models.valueObjects;
+package application.domain.valueObjects;
 
-public class UserStatus {
-
+public enum UserStatus {
+    Active,
+    Blocked,
+    Suspended
 }

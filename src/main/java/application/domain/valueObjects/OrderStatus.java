@@ -1,5 +1,10 @@
 package application.domain.valueObjects;
 
-public class OrderStatus {
+public enum OrderStatus {
+    PedingPayment,
+    Paid,
+    Dispatched,
+    Delivered,
+    Finalized,
 
 }

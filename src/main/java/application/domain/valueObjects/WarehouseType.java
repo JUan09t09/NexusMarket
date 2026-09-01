@@ -1,5 +1,6 @@
-package application.domain.models.valueObjects;
+package application.domain.valueObjects;
 
-public class WarehouseType {
-
+public enum WarehouseType {
+    Marketplace,
+    Seller,
 }

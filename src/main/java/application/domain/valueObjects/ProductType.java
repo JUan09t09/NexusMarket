@@ -1,5 +1,7 @@
 package application.domain.valueObjects;
 
-public class ProductType {
+public enum ProductType {
+    Physical,
+    Digital,
 
 }
