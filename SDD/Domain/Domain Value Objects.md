@@ -170,13 +170,15 @@ Hereda de
 
 DomainCatalog
 
+Valores permitidos
+
 | Codidigo | Nombre | Descripción |
 | --- | --- | --- |
 | PENDING_PAYMENT | Pendiente de pago | El pedido espera la confirmación financiera. |
 | PAID | Pagado | El pago fue validado y puede comenzar el proceso de alistamiento. |
 | DISPATCHED | Despachado | El pedido físico salió de la bodega. |
 | DELIVERED | Entregado | El pedido fue entregado al comprador. |
-| FINALISED | Finalizado | El ciclo comercial del pedido concluyó satisfactoriamente. |
+| FINALIZED | Finalizado | El ciclo comercial del pedido concluyó satisfactoriamente. |
 
 ## Ciclo de vida
 
@@ -203,6 +205,61 @@ PENDING_PAYMENT
        ▼
    FINALISED
 ```
+
+## ShippingStatus
+
+### Descripcion
+
+Representa el estado actual del proceso logistico de un envio 
+
+Hereda de 
+
+DomainCatalog
+
+Valores permitidos
+
+| codigo | nombre | Descripción |
+| --- | --- | --- |
+| PENDING | Pendiente | Pendiente por envio |
+| SHIPPED | Enviado | El envio se a realizado |
+| DELIVERED | Entregado | El envio fue entregado a el usuario |
+| RETURNED | Devuelto | El envio fue devuelto por el usuario |
+
+## ReturnStatus
+
+### Descripcion
+
+Representa el estado actual de una devolucion
+
+Hereda de 
+
+DomainCatalog
+
+Valores permitidos
+
+| codigo | nombre | Descripción |
+| --- | --- | --- |
+| Pending | Pendiente | Pendiente por revisar la solicitud de devolución |
+| Approved | Aprobado  | Aprobada la solicitud de devolución  |
+| Rejected | Rechazado | Rechazada la solicitud de devolución  |
+
+## RefundStatus
+
+### Descripcion
+
+Representa el estado actual de un reembolso.
+
+Hereda de 
+
+DomainCatalog
+
+Valores permitidos
+
+| codigo | nombre | Descripción |
+| --- | --- | --- |
+| Pending | Reembolso pendiente | La devolucion ya fue aprovada esta pediente por el reembolso |
+| Processing | Procedimiento | La orden de reembolso ya se envio. El dinero esta en transito |
+| Succeeded | Tuvo exito | Confirmacion que el dinero fue reembolsado al usuario |
 
 # Name
 
