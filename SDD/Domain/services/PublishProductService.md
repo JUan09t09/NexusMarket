@@ -17,7 +17,7 @@ La clase se anota con @Service para permitir la inyeccion de dependencias en Spr
     
     | Campo | Tipo de dato  | Restricciones | Descripcion |
     | --- | --- | --- | --- |
-    | id  | String | Requerido | Identificador unico del producto en el sistema |
+    | productId  | String | Requerido | Identificador unico del producto en el sistema |
     | sellerId | String | Requerido | Identificador unico del vendedor que publica el producto |
     | productType | productType | Valores: “Fisico”, “Digital” | Define el tipo de producto que se va publicar |
     | name | String | Requerido | Nombre del producto que se va publicar |
