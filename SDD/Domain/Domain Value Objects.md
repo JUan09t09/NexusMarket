@@ -63,9 +63,7 @@ Hereda de : DomainCatalog
 | --- | --- | --- |
 | BUYER | Comprador | Realiza compras dentro de la plataforma. |
 | SELLER | Vendedor | Administra y comercializa productos. |
-| LOGISTIC_OPERATOR | Operador Logístico | Gestiona inventarios, bodegas y despachos. |
 | ADMINISTRATOR | Administrador | Administra la operación general del sistema. |
-| SUPERVISOR | Supervisor | Supervisa y consulta la operación logística. |
 
 # UserStatus
 
