@@ -10,6 +10,11 @@ import application.domain.valueObjects.ReturnStatus;
 @Setter
 
 public class Return {
+    private String id;
+    private String orderId;
+    private String buyerId;
+    private String productId;
+    private int quantity;
     private LocalDate returnDate;
     private String reason;
     private ReturnStatus returnStatus;

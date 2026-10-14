@@ -1,5 +1,6 @@
 package application.domain.models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import lombok.Getter;
@@ -9,5 +10,7 @@ import lombok.Setter;
 @Setter
 
 public class ShoppingCart {
-    private List<Variant> items;
+    private String id;
+    private String buyerId;
+    private List<Variant> items = new ArrayList<>();
 }

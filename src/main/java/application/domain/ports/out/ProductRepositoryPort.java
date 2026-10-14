@@ -1,11 +1,16 @@
 package application.domain.ports.out;
 
 import application.domain.models.Product;
-import java.util.Optional;
 import java.util.List;
+import java.util.Optional;
 
 public interface ProductRepositoryPort {
-    public Product save(Product product);
-    Optional<Product> findById(String productId);
-    List<Product> findBySeller(String sellerId);
+
+    Product save(Product product);
+
+    Optional<Product> findById(Product product);
+
+    List<Product> findBySeller(Product product);
+
+    boolean existsById(Product product);
 }

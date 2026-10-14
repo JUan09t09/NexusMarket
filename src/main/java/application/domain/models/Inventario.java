@@ -7,6 +7,11 @@ import lombok.Setter;
 @Setter
 
 public class Inventario {
+    private String id;
+    private String productId;
+    private String storeId;
     private Integer amount;
+    private Integer reserved;
+    private boolean available;
 
 }

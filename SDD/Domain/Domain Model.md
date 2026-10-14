@@ -102,9 +102,8 @@ Atributos
 | identifier | long | Identificador único de la entidad. Representa un número de identificación nacional para las personas físicas o un número de identificación fiscal para las empresas. |
 | name | name | Nombre completo de una persona física o razón social de una empresa. |
 | email | String | Dirección de correo electrónico principal registrada. |
-| rol | UserRole | Define las responsabilidades y permisos. |
+| role | UserRole | Define las responsabilidades y permisos. |
 | status | UserStatus | Condición operativa (Activo, bloqueado, etc.) |
-| Password | String | Contraseña única de cada usuario para ingresar al sistema |
 
 Relaciones
 

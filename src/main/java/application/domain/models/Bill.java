@@ -1,6 +1,7 @@
 package application.domain.models;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -10,7 +11,8 @@ import lombok.Setter;
 
 public class Bill {
     private String invoiceId;
-    private String invoiceDate;
+    private String orderId;
+    private LocalDate invoiceDate;
     private BigDecimal totalAmount;
 
 }

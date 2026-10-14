@@ -11,6 +11,8 @@ import lombok.Setter;
 @Setter
 
 public class Refund {
+    private String id;
+    private String returnId;
     private LocalDate refundDate;
     private BigDecimal amount;
     private RefundStatus status;

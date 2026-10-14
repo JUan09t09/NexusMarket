@@ -9,9 +9,11 @@ import lombok.Setter;
 @Getter
 
 public class Shipment {
-    private ShippingStatus shippingStatus;
-    private LocalDate shipmentDate;
-    private LocalDate deliveryDate;
     private long identifier;
+    private String orderId;
+    private String buyerId;
+    private ShippingStatus shippingStatus;
+    private LocalDate shippingDate;
+    private LocalDate deliveryDate;
 
 }
