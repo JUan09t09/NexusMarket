@@ -2,13 +2,14 @@ package application.adapters.persistence.sql.adapter;
 
 import application.domain.models.User;
 import application.domain.ports.out.PasswordEncoderPort;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 @Component
+@RequiredArgsConstructor
 public class PasswordSecurityAdapter implements PasswordEncoderPort {
-    private final PasswordEncoder encoder = new BCryptPasswordEncoder();
+    private final PasswordEncoder encoder;
 
     @Override
     public String encode(User user, String rawPassword) {

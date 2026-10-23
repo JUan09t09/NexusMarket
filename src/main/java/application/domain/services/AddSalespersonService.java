@@ -10,6 +10,7 @@ import application.domain.exceptions.UnauthorizedUserException;
 import application.domain.models.Store;
 import application.domain.models.User;
 import application.domain.ports.in.AddSalespersonUseCase;
+import application.domain.ports.out.PasswordEncoderPort;
 import application.domain.ports.out.StoreRepositoryPort;
 import application.domain.ports.out.UserRepositoryPort;
 import application.domain.valueObjects.UserRole;
@@ -22,6 +23,7 @@ import application.domain.valueObjects.WarehouseType;
 public class AddSalespersonService implements AddSalespersonUseCase {
     private final UserRepositoryPort userRepositoryPort;
     private final StoreRepositoryPort storeRepositoryPort;
+    private final PasswordEncoderPort passwordEncoderPort;
 
     @Override
     public User execute(
@@ -72,6 +74,7 @@ public class AddSalespersonService implements AddSalespersonUseCase {
         seller.setEmail(mail);
         seller.setRole(UserRole.Seller);
         seller.setStatus(UserStatus.Active);
+        seller.setPassword(passwordEncoderPort.encode(seller, documentId));
         User savedSeller = userRepositoryPort.save(seller);
 
         Store store = new Store();

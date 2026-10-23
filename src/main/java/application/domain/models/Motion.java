@@ -2,7 +2,6 @@ package application.domain.models;
 
 import java.time.LocalDate;
 import application.domain.valueObjects.MovementType;
-
 import lombok.Getter;
 import lombok.Setter;
 

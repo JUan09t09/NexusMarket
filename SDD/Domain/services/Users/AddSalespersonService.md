@@ -24,7 +24,7 @@ La clase se anota con @Service. para permitir la inyección de dependencias en S
     | tradeName | String | Requerido(No puede estar vacio) | Nombre comercial |
     | documentId | String | Requerido(No puede estar vacio) | Numero de identificacion del vendedor |
     | mail | String | Formato de Email valido | Correo electrónico de contacto |
-    | wineryName | String | Requerido | Nombre de la primera bodega fisica |
+    | wineryName | String | Requerido | Nombre de la primera bodega |
     | typeWinery | String | Requerido (Valores permitidos: "Marketplace" o "Vendedor") | Tipo inicial de la bodega |
     | wineryAddress | String | Opcional (o Requerido si aplica) | Dirección física de la bodega |
 - **Salida:**
